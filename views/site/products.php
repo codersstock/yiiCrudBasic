@@ -32,6 +32,16 @@ $this->title = 'My Products';
   Create Product
 </button>
 <br><br><br>
+
+<div class="row" style="margin:10px;">
+
+<div class="col-sm-4">
+<input type="search" placeholder='Search Here' class="form-control" name="" id="">
+
+</div>
+</div>
+
+
 <table class="table table-hover">
     <tr>
         <th>Product ID</th>
@@ -50,8 +60,8 @@ $this->title = 'My Products';
         <td><?=$pro->description?></td>
         <td>
         <span><?= Html::a('View',['product','id'=>$pro->id],['class'=>'label label-primary']);?></span>
-        <span><?= Html::a('Update',['view','id'=>$pro->id],['class'=>'label label-success']);?></span>
-        <span><?= Html::a('Delete',['product','id'=>$pro->id],['class'=>'label label-danger']);?></span>
+        <span><?= Html::a('Update',['update','id'=>$pro->id],['class'=>'label label-success']);?></span>
+        <span><?= Html::a('Delete',['delete','id'=>$pro->id],['class'=>'label label-danger']);?></span>
 
         </td>
     </tr>

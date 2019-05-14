@@ -99,10 +99,39 @@ public function actionProduct($id){
 }
 
 
-public function actionView($id){
+public function actionUpdate($id){
 
+    
     $product = Products::findOne($id);
-    return $this->render('Update',['product'=>$product]);
+    $formData = Yii::$app->request->post();
+
+
+
+if($product->load($formData) ){
+   try{
+    $product->save();
+    Yii::$app->session->setFlash('message','product updated sucessfully');
+    return $this->redirect(['update','id'=>$id]);
+   }
+   catch(Exception $ex){
+    Yii::$app->session->setFlash('fail','Failed to update product');
+   }
+}
+
+
+return $this->render('update',['post'=>$product]);
+
+
+}
+
+
+// Deleete Product   
+public function actionDelete($id){
+                $product = Products::findOne($id)->delete();
+                if($product){
+                Yii::$app->session->setFlash('message','product deleted sucessfully');
+                return $this->redirect(['index']);
+            }
 }
 
 
